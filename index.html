@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>junho's laboratory</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+
+<script>
+function randomChoice() {
+	var values = jQuery("#randomValues").val();
+
+	if (values == "") {
+		alert("input values");
+		jQuery("#randomValues").focus();
+		return;
+	}
+
+	var arrValues = values.split(",");
+	var sizes = arrValues.length;
+
+	var randomNumber = Math.floor((Math.random()*sizes));
+
+	alert(arrValues[randomNumber]);
+}
+</script>
+
+</head>
+
+<body>
+
+<h1>DevTools</h1>
+<a href="devtools">devtools</a>
+<h1>24K Gold</h1>
+<a href="24k-gold">24k-gold</a>
+<h1>Random Selector</h1>
+<div>
+<input type="text" id="randomValues" placeholder="seperated by ','" />
+<input type="button" value="get random value" onclick="randomChoice()" />
+</div>
+<br />
+<br />
+수빈쿠팡파트너스
+<iframe src="https://ads-partners.coupang.com/iframe/search-bar?id=1905271823563450211004594-f2&type=f2&trackingCode=AF7634218" width="100%" height="36" frameborder="0" scrolling="no"></iframe>
+준쿠팡파트너스
+<iframe src="https://ads-partners.coupang.com/iframe/search-bar?id=1905271827491020211004618-f2&type=f2&trackingCode=AF5757091" width="100%" height="36" frameborder="0" scrolling="no"></iframe>
+<br />
+<br />
+
+<!-- 구글애드센스 Start -->
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-8756229796915320";
+/* 728x90, 작성됨 08. 11. 13 */
+google_ad_slot = "3847803343";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+</body>
+</html>
