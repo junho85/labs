@@ -115,6 +115,7 @@ $(document).ready(function() {
 
 <div class="container">
     <h2>Youtube Thumbnail Extractor</h2>
+    <form onsubmit="get_thumbnails(); return false;">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">Video URL</span>
@@ -124,6 +125,7 @@ $(document).ready(function() {
             <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="get_thumbnails()">Extract</button>
         </div>
     </div>
+    </form>
 
     <div id="result"></div>
 
