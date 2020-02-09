@@ -3,54 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <title>junho's laboratory</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <script>
 function randomChoice() {
-	var values = jQuery("#randomValues").val();
+    const values = jQuery("#randomValues").val();
 
-	if (values == "") {
+    if (values == "") {
 		alert("input values");
 		jQuery("#randomValues").focus();
 		return;
 	}
 
-	var arrValues = values.split(",");
-	var sizes = arrValues.length;
+    const arrValues = values.split(",");
+    const sizes = arrValues.length;
 
-	var randomNumber = Math.floor((Math.random()*sizes));
+    const randomNumber = Math.floor((Math.random() * sizes));
 
-	alert(arrValues[randomNumber]);
+    alert(arrValues[randomNumber]);
 }
 </script>
 
 </head>
 
 <body>
+<header>
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">About</h4>
+                    <p class="text-muted">June Kim</p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-white">Contact</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="https://twitter.com/junho85" target="_blank" class="text-white">Follow on Twitter</a></li>
+                        <li><a href="https://fb.com/junho85" target="_blank" class="text-white">Like on Facebook</a></li>
+                        <li><a href="https://www.youtube.com/user/TheWBP" target="_blank" class="text-white">Subscribe on Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                <strong>June Kim's Laboratory</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
 
-<h1>DevTools</h1>
-<a href="devtools">devtools</a>
-<h1>24K Gold</h1>
-<a href="24k-gold">24k-gold</a>
-<h1>Random Selector</h1>
-<div>
-<input type="text" id="randomValues" placeholder="seperated by ','" />
-<input type="button" value="get random value" onclick="randomChoice()" />
+<div class="container">
+    <h2>DevTools</h2>
+    <a href="devtools">devtools</a>
+
+    <h2>Creator</h2>
+    <a href="creator">creator</a>
+
+    <h2>24K Gold</h2>
+    <a href="24k-gold">24k-gold</a>
+
+    <h2>Random Selector</h2>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="randomValues" placeholder="e.g. 1,2,3 (seperated by ',')" />
+        <div class="input-group-append">
+            <input type="button" class="btn btn-primary" value="get random value" onclick="randomChoice()" />
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <h2>쿠팡파트너스</h2>
+    수빈쿠팡파트너스
+    <iframe src="https://ads-partners.coupang.com/iframe/search-bar?id=1905271823563450211004594-f2&type=f2&trackingCode=AF7634218" width="100%" height="36" frameborder="0" scrolling="no"></iframe>
+    준쿠팡파트너스
+    <iframe src="https://ads-partners.coupang.com/iframe/search-bar?id=1905271827491020211004618-f2&type=f2&trackingCode=AF5757091" width="100%" height="36" frameborder="0" scrolling="no"></iframe>
+    <br />
+    <br />
+
+    <a href="https://coupa.ng/bhAv5M" target="_blank"><img src="https://static.coupangcdn.com/image/affiliate/banner/874fea736a6d87acd545a349f8bc4770@2x.jpg" alt="소니 하이엔드 카메..." width="120" height="240"></a>
 </div>
-<br />
-<br />
-
-<h2>쿠팡파트너스</h2>
-수빈쿠팡파트너스
-<iframe src="https://ads-partners.coupang.com/iframe/search-bar?id=1905271823563450211004594-f2&type=f2&trackingCode=AF7634218" width="100%" height="36" frameborder="0" scrolling="no"></iframe>
-준쿠팡파트너스
-<iframe src="https://ads-partners.coupang.com/iframe/search-bar?id=1905271827491020211004618-f2&type=f2&trackingCode=AF5757091" width="100%" height="36" frameborder="0" scrolling="no"></iframe>
-<br />
-<br />
-
-
-<a href="https://coupa.ng/bhAv5M" target="_blank"><img src="https://static.coupangcdn.com/image/affiliate/banner/874fea736a6d87acd545a349f8bc4770@2x.jpg" alt="소니 하이엔드 카메..." width="120" height="240"></a>
 
 <!-- 구글애드센스 Start -->
 <script type="text/javascript"><!--
