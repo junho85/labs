@@ -54,6 +54,16 @@ function get_thumbnails() {
             explain: "최대 해상도"
         },
         {
+            url: `https://img.youtube.com/vi_webp/${videoId}/maxresdefault.webp`,
+            title: "Maximum Resolution - webp",
+            explain: "최대 해상도 - webp"
+        },
+        {
+            url: `https://img.youtube.com/vi/${videoId}/original.jpg`,
+            title: "Original",
+            explain: "Original"
+        },
+        {
             url: `https://img.youtube.com/vi/${videoId}/0.jpg`,
             title: "0",
             explain: "0"
@@ -94,7 +104,8 @@ function get_thumbnails() {
             explain: "SD"
         },
     ];
-    thumbnails.forEach(function (row) {
+    thumbnails.forEach(function (row, index) {
+        const id = `tmp_${index}`;
         $("#result").append(`
 <div class="row">
     <div class="media text-muted pt-3">
@@ -103,14 +114,19 @@ function get_thumbnails() {
                 <img src="${row.url}" style="max-width: 240px"/>
             </a>
         </div>
-        <p class="media-body pb-3 mb-0 small lh-125">
+        <p class="media-body pb-3 mb-0 small lh-125" id="${id}">
             <strong class="d-block text-gray-dark">${row.title}</strong>
-            <a href="${row.url}" target="_blank">${row.url}</a>
+            URL: <a href="${row.url}" target="_blank">${row.url}</a>
         </p>
     </div>
 </div>
 `);
-
+        // resolution
+        const img = new Image();
+        img.onload = function() {
+            $(`#${id}`).append("<br>resolution: " + this.width + 'x' + this.height);
+        };
+        img.src = row.url;
     });
 }
 
