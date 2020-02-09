@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Youtube Thumbnail Extractor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script>
+        // prepare youtube script
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/player_api";
+
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+</head>
+<body>
+
+<script>
+function get_thumbnails() {
+    const url = new URL($("#youtube-video-url").val());
+    const videoId = url.searchParams.get("v");
+
+    // clear
+    $("#result").empty();
+
+    // player
+    $("#result").append(`
+<h3>Youtube Player</h3>
+<div id="player">
+    <iframe id="ytplayer" type="text/html" width="720" height="405"
+    src="https://www.youtube.com/embed/${videoId}?loop=1"
+    frameborder="0" allowfullscreen>
+</div>
+`);
+
+    // thumbnails
+    $("#result").append(`
+<h3>Thumbnails</h3>
+    `);
+    const thumbnails = [
+        {
+            url: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+            title: "Maximum Resolution",
+            explain: "최대 해상도"
+        },
+        {
+            url: `https://img.youtube.com/vi/${videoId}/0.jpg`,
+            title: "0",
+            explain: "0"
+        },
+        {
+            url: `https://img.youtube.com/vi/${videoId}/1.jpg`,
+            title: "1",
+            explain: "1"
+        },
+        {
+            url: `https://img.youtube.com/vi/${videoId}/2.jpg`,
+            title: "2",
+            explain: "2"
+        },
+        {
+            url: `https://img.youtube.com/vi/${videoId}/3.jpg`,
+            title: "3",
+            explain: "3"
+        },
+        {
+            url: `https://img.youtube.com/vi/${videoId}/default.jpg`,
+            title: "Default",
+            explain: "Default"
+        },
+        {
+            url: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+            title: "High Quality",
+            explain: "HQ"
+        },
+        {
+            url: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+            title: "Medium Quality",
+            explain: "MQ"
+        },
+        {
+            url: `https://img.youtube.com/vi/${videoId}/sddefault.jpg`,
+            title: "SD (Standard Definition)",
+            explain: "SD"
+        },
+    ];
+    thumbnails.forEach(function (row) {
+        $("#result").append(`
+<div class="row">
+    <div class="media text-muted pt-3">
+        <div style="width: 250px; text-align: center">
+            <a href="${row.url}" target="_blank">
+                <img src="${row.url}" style="max-width: 240px"/>
+            </a>
+        </div>
+        <p class="media-body pb-3 mb-0 small lh-125">
+            <strong class="d-block text-gray-dark">${row.title}</strong>
+            <a href="${row.url}" target="_blank">${row.url}</a>
+        </p>
+    </div>
+</div>
+`);
+
+    });
+}
+
+$(document).ready(function() {
+    get_thumbnails();
+});
+
+</script>
+
+<div class="container">
+    <h2>Youtube Thumbnail Extractor</h2>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Video URL</span>
+        </div>
+        <input type="text" class="form-control" id="youtube-video-url" aria-describedby="basic-addon3" placeholder="e.g. https://www.youtube.com/watch?v=1QR1OuCEh8k" value="https://www.youtube.com/watch?v=1QR1OuCEh8k">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="get_thumbnails()">Extract</button>
+        </div>
+    </div>
+
+    <div id="result"></div>
+</div>
+
+<footer class="container">
+    <p>&copy; June Kim</p>
+</footer>
+
+</body>
+</html>
