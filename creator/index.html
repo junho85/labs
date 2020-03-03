@@ -26,9 +26,22 @@
 <body>
 
 <script>
+function get_video_id() {
+    let url_str = $("#youtube-video-url").val();
+    const url = new URL(url_str);
+
+
+    if (url_str.includes("://youtu.be/")) {
+        // https://youtu.be/2aI8sshVz6k
+        return url.pathname.replace(/^\//, '');
+    } else {
+        // https://www.youtube.com/watch?v=1QR1OuCEh8k
+        return url.searchParams.get("v");
+    }
+}
+
 function get_thumbnails() {
-    const url = new URL($("#youtube-video-url").val());
-    const videoId = url.searchParams.get("v");
+    const videoId = get_video_id();
 
     // clear
     $("#result").empty();
