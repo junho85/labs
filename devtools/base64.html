@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Base64 Tools</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<main role="main">
+    <div class="container">
+        Base64 데이터를 ASCII 코드의 문자로만 이루어진 데이터로 표현하는 방식이다. 이메일의 MIME 에서 Base64 를 많이 쓴다.
+        <h1>Base64 Decoder</h1>
+        <p>decode base64 e.g. 7JWI64WV7ZWY7IS47JqU -> 안녕하세요</p>
+        <textarea id="decode_src" class="form-control"></textarea>
+        <div>
+            <button type="button" class="btn btn-primary" onclick="base64_decode()">decode</button>
+        </div>
+        <textarea id="decode_dst" class="form-control" readonly="readonly"></textarea>
+
+        <h1>Base64 Encoder</h1>
+        <p>encode base64 e.g. 안녕하세요 -> 7JWI64WV7ZWY7IS47JqU</p>
+        <textarea id="encode_src" class="form-control"></textarea>
+        <div>
+            <button type="button" class="btn btn-primary" onclick="base64_encode()">encode</button>
+        </div>
+        <textarea id="encode_dst" class="form-control" readonly="readonly"></textarea>
+    </div>
+</main>
+
+
+<footer>
+    <div class="container">
+        <!-- 구글애드센스 Start -->
+        <script type="text/javascript"><!--
+        google_ad_client = "ca-pub-8756229796915320";
+        /* 728x90, 작성됨 08. 11. 13 */
+        google_ad_slot = "3847803343";
+        google_ad_width = 728;
+        google_ad_height = 90;
+        //-->
+        </script>
+        <script type="text/javascript"
+                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+    </div>
+</footer>
+
+<script>
+    function base64_encode() {
+        const src = $("#encode_src").val();
+
+        const result = b64EncodeUnicode(src);
+
+        $("#encode_dst").val(result);
+    }
+
+    function base64_decode() {
+        const src = $("#decode_src").val();
+
+        const result = b64DecodeUnicode(src);
+
+        $("#decode_dst").val(result);
+    }
+
+    function b64EncodeUnicode(str) {
+        // first we use encodeURIComponent to get percent-encoded UTF-8,
+        // then we convert the percent encodings into raw bytes which
+        // can be fed into btoa.
+        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+            function toSolidBytes(match, p1) {
+                return String.fromCharCode('0x' + p1);
+            }));
+    }
+
+    function b64DecodeUnicode(str) {
+        // Going backwards: from bytestream, to percent-encoding, to original string.
+        return decodeURIComponent(atob(str).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+    }
+
+</script>
+</body>
+</html>
